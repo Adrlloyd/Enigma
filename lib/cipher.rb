@@ -6,7 +6,7 @@ module Cipher
     rand.to_s[2..7]
   end
 
-  def today
+  def the_date
     Date.today.strftime("%d%m%y")
   end
 
