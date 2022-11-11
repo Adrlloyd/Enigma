@@ -37,6 +37,12 @@ RSpec.describe Enigma do
       expect(input[:key].length).to eq 5
       expect(input[:date]).to eq the_date
     end
+    
+    xit 'converts the message to lower case' do
+      input1 = enigma.encrypt("HELLO WORLD", "02715", "040895")
+
+      expect(input1[:encryption]).to eq "keder ohulw"
+    end
   end
 
   describe '#decrypt' do
