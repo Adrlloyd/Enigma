@@ -1,6 +1,15 @@
-class Enigma
+require 'date'
+require_relative 'cipher'
 
-  def encrypt(message, key = rand_key, date = the_date)
+class Enigma
+  include Cipher
+
+  def encrypt(message, key = rand_keys, date = the_date)
+    { 
+      encryption: message.downcase,
+      key: key,
+      date: date
+    }
   end
 
   def decrypt
