@@ -8,7 +8,7 @@ RSpec.describe Cipher do
   describe '#rand_keys' do
     it 'creates a string of 5 random keys(digits)' do
      expect(enigma.rand_keys).to be_a String
-     expect(enigma.rand_keys.length).to eq 6
+     expect(enigma.rand_keys.length).to eq 5
     end
   end
 

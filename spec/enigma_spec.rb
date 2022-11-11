@@ -33,7 +33,7 @@ RSpec.describe Enigma do
       input = enigma.encrypt("hello world")
 
       # expect(enigma[:message]).to eq "keder ohulw"
-      expect(input[:key].length).to eq 6
+      expect(input[:key].length).to eq 5
       expect(input[:date]).to eq the_date
     end
   end

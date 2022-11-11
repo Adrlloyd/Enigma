@@ -3,7 +3,7 @@ require 'date'
 module Cipher
 
   def rand_keys
-    rand.to_s[2..7]
+    rand.to_s[2..6]
   end
 
   def the_date

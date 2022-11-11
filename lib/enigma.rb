@@ -6,7 +6,7 @@ class Enigma
 
   def encrypt(message, key = rand_keys, date = the_date)
     { 
-      message: message,
+      encryption: message.downcase,
       key: key,
       date: date
     }
