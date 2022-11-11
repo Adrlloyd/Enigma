@@ -3,17 +3,18 @@ require './lib/enigma'
 
 RSpec.describe Cipher do
   let(:enigma) {Enigma.new}
+  let(:the_date) {Date.today.strftime("%m%d%y")}
 
   describe '#rand_keys' do
     it 'creates a string of 5 random keys(digits)' do
-     # expect(enigma.rand_keys).to be_a String
-     # expect(enigma.rand_keys.count).to eq 5
+    #  expect(enigma.rand_keys).to be_a String
+    #  expect(enigma.rand_keys.count).to eq 5
     end
   end
 
   describe '#the_date' do
     it 'generates todays date' do
-      # expect(enigma.the_date.count).to eq 6
+     # expect(enigma.the_date.count).to eq 6
     end
   end
 

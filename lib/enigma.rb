@@ -5,6 +5,11 @@ class Enigma
   include Cipher
 
   def encrypt(message, key = rand_keys, date = the_date)
+    { 
+      message: encryption,
+      key: key,
+      date: date
+    }
   end
 
   def decrypt
