@@ -12,7 +12,12 @@ class Enigma
     }
   end
 
-  def decrypt
+  def decrypt(message, key, date = the_date)
+    { 
+      decryption: message.downcase,
+      key: key,
+      date: date
+    }
   end
 
 end
