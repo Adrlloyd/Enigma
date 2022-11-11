@@ -14,6 +14,7 @@ RSpec.describe Enigma do
 
     it 'encrypts a message' do
       input = enigma.encrypt("hello world", "02715", "040895")
+      
 
       expect(input).to be_a Hash
       # expect(input[:message]).to eq "keder ohulw"
@@ -46,7 +47,7 @@ RSpec.describe Enigma do
       input = enigma.decrypt("keder ohulw", "02715", "040895")
 
       expect(input).to be_a Hash
-      # expect(input[:message]).to eq "hello world"
+      # expect(input[:decryption]).to eq "hello world"
       expect(input[:key]).to eq "02715"
       expect(input[:date]).to eq "040895"
     end
@@ -54,9 +55,15 @@ RSpec.describe Enigma do
     it 'allows the user to only input the key' do
       input = enigma.decrypt("keder ohulw", "02715")
 
-      # expect(input[:message]).to eq "hello world"
+      # expect(input[:decryption]).to eq "hello world"
       expect(input[:key]).to eq "02715"
       expect(input[:date]).to eq the_date
+    end
+
+    it 'converts the message to lower case' do
+      input1 = enigma.decrypt("HELLO WORLD", "02715", "040895")
+
+      expect(input1[:decryption]).to eq "hello world"
     end
   end
 end
