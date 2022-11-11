@@ -23,4 +23,20 @@ RSpec.describe Shift do
       expect(input).to be_a Hash
     end
   end
+
+  describe '#the_offset' do
+    let(:shift) {Shift.new}
+       
+    it 'creates the offset amount for each key' do
+      input = shift.the_offset
+  
+      expect(input[:A].length).to eq 1
+      expect(input[:A]).to eq "8"
+      # expect(input[:B]).to eq "8"
+      # expect(input[:C]).to eq "8"
+      # expect(input[:D]).to eq "4"
+      expect(input[:E]).to eq nil
+      expect(input).to be_a Hash
+    end
+  end
 end
