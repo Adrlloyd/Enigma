@@ -37,4 +37,26 @@ RSpec.describe Enigma do
       expect(input[:date]).to eq the_date
     end
   end
+
+  describe '#decrypt' do
+    let(:enigma) {Enigma.new}
+    let(:the_date) {Date.today.strftime("%m%d%y")}
+
+    it 'decrypts a message' do
+      input = enigma.decrypt("keder ohulw", "02715", "040895")
+
+      expect(input).to be_a Hash
+      # expect(input[:message]).to eq "hello world"
+      expect(input[:key]).to eq "02715"
+      expect(input[:date]).to eq "040895"
+    end
+
+    it 'allows the user to only input the key' do
+      input = enigma.decrypt("keder ohulw", "02715")
+
+      # expect(input[:message]).to eq "hello world"
+      expect(input[:key]).to eq "02715"
+      expect(input[:date]).to eq the_date
+    end
+  end
 end
