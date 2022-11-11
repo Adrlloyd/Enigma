@@ -1,6 +1,10 @@
-class Enigma
+require 'date'
+require_relative 'cipher'
 
-  def encrypt(message, key = rand_key, date = the_date)
+class Enigma
+  include Cipher
+
+  def encrypt(message, key = rand_keys, date = the_date)
   end
 
   def decrypt
