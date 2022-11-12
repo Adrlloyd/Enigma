@@ -1,14 +1,14 @@
-require_relative 'cipher'
+require_relative 'cypher'
 
 class Shift
-  include Cipher
+  include Cypher
 
-  def the_keys
+  def the_keys(key)
     the_keys = Hash.new
-    the_keys[:A] = rand_keys[0..1]
-    the_keys[:B] = rand_keys[1..2]
-    the_keys[:C] = rand_keys[2..3]
-    the_keys[:D] = rand_keys[3..4]
+    the_keys[:A] = key[0..1]
+    the_keys[:B] = key[1..2]
+    the_keys[:C] = key[2..3]
+    the_keys[:D] = key[3..4]
     the_keys
   end
 
@@ -22,12 +22,23 @@ class Shift
     date_squared[-4..-1]
   end
 
-  def the_offset
+  def the_offsets(date)
     the_offset = Hash.new
     the_offset[:A] = offset_amount[0]
     the_offset[:B] = offset_amount[1]
     the_offset[:C] = offset_amount[2]
     the_offset[:D] = offset_amount[3]
     the_offset
+  end
+
+  #combined 
+
+  def the_shifts(keys, offsets)
+    shifts = Hash.new
+    shifts[:A] = (the_keys[:A].to_i + the_offset[:A].to_i)
+    shifts[:B] = (the_keys[:B].to_i + the_offset[:B].to_i)
+    shifts[:C] = (the_keys[:C].to_i + the_offset[:C].to_i)
+    shifts[:D] = (the_keys[:D].to_i + the_offset[:D].to_i)
+    shifts
   end
 end

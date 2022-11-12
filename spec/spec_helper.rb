@@ -1,5 +1,5 @@
 require 'simplecov'
 SimpleCov.start
 require './lib/enigma'
-require './lib/cipher'
+require './lib/cypher'
 require './lib/shift'
