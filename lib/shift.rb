@@ -34,11 +34,11 @@ class Shift
   #combined 
 
   def the_shifts(keys, offsets)
-    shifts = Hash.new
-    shifts[:A] = (the_keys[:A].to_i + the_offset[:A].to_i)
-    shifts[:B] = (the_keys[:B].to_i + the_offset[:B].to_i)
-    shifts[:C] = (the_keys[:C].to_i + the_offset[:C].to_i)
-    shifts[:D] = (the_keys[:D].to_i + the_offset[:D].to_i)
-    shifts
+    the_shifts = Hash.new
+    the_shifts[:A] = (keys[:A].to_i + offsets[:A].to_i)
+    the_shifts[:B] = (keys[:B].to_i + offsets[:B].to_i)
+    the_shifts[:C] = (keys[:C].to_i + offsets[:C].to_i)
+    the_shifts[:D] = (keys[:D].to_i + offsets[:D].to_i)
+    the_shifts
   end
 end

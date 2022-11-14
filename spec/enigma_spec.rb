@@ -24,20 +24,22 @@ RSpec.describe Enigma do
     end
 
     it 'allows the user to only input the key' do
+      allow(enigma).to receive(:today).and_return("131122")
       input = enigma.encrypt("hello world", "02715")
 
       # expect(enigma[:message]).to eq "keder ohulw"
       expect(input[:key]).to eq "02715"
-      expect(input[:date]).to eq the_date
+      expect(input[:date]).to eq "131122"
     end
 
     it 'allows the user to not input the key or date' do
-      allow(enigma).to receive(:rand_keys).and_return("40794")
+      allow(enigma).to receive(:rand_keys).and_return("02715")
+      allow(enigma).to receive(:today).and_return("131122")
       input = enigma.encrypt("hello world")
 
       # expect(enigma[:message]).to eq "keder ohulw"
       expect(input[:key].length).to eq 5
-      expect(input[:date]).to eq today
+      expect(input[:date]).to eq "131122"
     end
     
     xit 'converts the message to lower case' do
