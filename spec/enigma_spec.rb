@@ -16,33 +16,33 @@ RSpec.describe Enigma do
     it 'encrypts a message' do
       input = enigma.encrypt("hello world", "02715", "040895")
       
-
       expect(input).to be_a Hash
-      # expect(input[:message]).to eq "keder ohulw"
+      expect(input[:encryption]).to eq "keder ohulw"
       expect(input[:key]).to eq "02715"
       expect(input[:date]).to eq "040895"
     end
 
     it 'allows the user to only input the key' do
-      allow(enigma).to receive(:today).and_return("131122")
+      allow(enigma).to receive(:today).and_return("040895")
       input = enigma.encrypt("hello world", "02715")
 
-      # expect(enigma[:message]).to eq "keder ohulw"
+      expect(input[:encryption]).to eq "keder ohulw"
       expect(input[:key]).to eq "02715"
-      expect(input[:date]).to eq "131122"
+      expect(input[:date]).to eq "040895"
     end
 
     it 'allows the user to not input the key or date' do
       allow(enigma).to receive(:rand_keys).and_return("02715")
-      allow(enigma).to receive(:today).and_return("131122")
+      allow(enigma).to receive(:today).and_return("040895")
       input = enigma.encrypt("hello world")
 
-      # expect(enigma[:message]).to eq "keder ohulw"
+      expect(input[:encryption]).to eq "keder ohulw"
       expect(input[:key].length).to eq 5
-      expect(input[:date]).to eq "131122"
+      expect(input[:date]).to eq "040895"
     end
     
-    xit 'converts the message to lower case' do
+    it 'converts the message to lower case' do
+      allow(enigma).to receive(:today).and_return("040895")
       input1 = enigma.encrypt("HELLO WORLD", "02715", "040895")
 
       expect(input1[:encryption]).to eq "keder ohulw"
@@ -63,12 +63,12 @@ RSpec.describe Enigma do
     end
 
     it 'allows the user to only input the key' do
-      allow(enigma).to receive(:today).and_return("131122")
+      allow(enigma).to receive(:today).and_return("040895")
       input = enigma.decrypt("keder ohulw", "02715")
       
       # expect(input[:decryption]).to eq "hello world"
       expect(input[:key]).to eq "02715"
-      expect(input[:date]).to eq ("131122")
+      expect(input[:date]).to eq "040895"
     end
 
     it 'converts the message to lower case' do

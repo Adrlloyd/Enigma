@@ -13,16 +13,10 @@ class Shift
   end
 
   #offsets
-
-  def date_squared
-    (today.to_i ** 2).to_s
-  end
-
-  def offset_amount
-    date_squared[-4..-1]
-  end
-
   def the_offsets(date)
+    date_squared = (date.to_i ** 2).to_s
+    offset_amount = date_squared[-4..-1]
+  
     the_offset = Hash.new
     the_offset[:A] = offset_amount[0]
     the_offset[:B] = offset_amount[1]
