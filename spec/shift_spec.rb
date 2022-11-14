@@ -1,4 +1,3 @@
-require './lib/cypher'
 require './lib/shift'
 
 RSpec.describe Shift do

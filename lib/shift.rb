@@ -15,7 +15,7 @@ class Shift
   #offsets
 
   def date_squared
-    (the_date.to_i ** 2).to_s
+    (today.to_i ** 2).to_s
   end
 
   def offset_amount
