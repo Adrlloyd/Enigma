@@ -1,6 +1,7 @@
 require 'date'
 require './lib/enigma'
 
+
 RSpec.describe Enigma do
   it 'exists' do
     enigma = Enigma.new
@@ -10,7 +11,7 @@ RSpec.describe Enigma do
 
   describe '#encrypt' do
     let(:enigma) {Enigma.new}
-    let(:the_date) {Date.today.strftime("%m%d%y")}
+    let(:today) {Date.today.strftime("%m%d%y")}
 
     it 'encrypts a message' do
       input = enigma.encrypt("hello world", "02715", "040895")
@@ -23,19 +24,22 @@ RSpec.describe Enigma do
     end
 
     it 'allows the user to only input the key' do
+      allow(enigma).to receive(:today).and_return("131122")
       input = enigma.encrypt("hello world", "02715")
 
       # expect(enigma[:message]).to eq "keder ohulw"
       expect(input[:key]).to eq "02715"
-      expect(input[:date]).to eq the_date
+      expect(input[:date]).to eq "131122"
     end
 
     it 'allows the user to not input the key or date' do
+      allow(enigma).to receive(:rand_keys).and_return("02715")
+      allow(enigma).to receive(:today).and_return("131122")
       input = enigma.encrypt("hello world")
 
       # expect(enigma[:message]).to eq "keder ohulw"
       expect(input[:key].length).to eq 5
-      expect(input[:date]).to eq the_date
+      expect(input[:date]).to eq "131122"
     end
     
     xit 'converts the message to lower case' do
@@ -47,7 +51,7 @@ RSpec.describe Enigma do
 
   describe '#decrypt' do
     let(:enigma) {Enigma.new}
-    let(:the_date) {Date.today.strftime("%m%d%y")}
+    let(:today) {Date.today.strftime("%m%d%y")}
 
     it 'decrypts a message' do
       input = enigma.decrypt("keder ohulw", "02715", "040895")
@@ -59,11 +63,12 @@ RSpec.describe Enigma do
     end
 
     it 'allows the user to only input the key' do
+      allow(enigma).to receive(:today).and_return("131122")
       input = enigma.decrypt("keder ohulw", "02715")
-
+      
       # expect(input[:decryption]).to eq "hello world"
       expect(input[:key]).to eq "02715"
-      expect(input[:date]).to eq the_date
+      expect(input[:date]).to eq ("131122")
     end
 
     it 'converts the message to lower case' do

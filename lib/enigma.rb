@@ -1,10 +1,14 @@
 require 'date'
-require_relative 'cipher'
+require_relative 'shift'
+require_relative 'cypher'
 
-class Enigma
-  include Cipher
+class Enigma < Shift
+  include Cypher
 
-  def encrypt(message, key = rand_keys, date = the_date)
+  def encrypt(message, key = rand_keys, date = today)
+    keys = the_keys(key)
+    offsets = the_offsets(date)
+    shifts = the_shifts(keys, offsets)
     { 
       encryption: message.downcase,
       key: key,
@@ -12,7 +16,7 @@ class Enigma
     }
   end
 
-  def decrypt(message, key, date = the_date)
+  def decrypt(message, key, date = today)
     { 
       decryption: message.downcase,
       key: key,
