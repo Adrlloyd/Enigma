@@ -1,7 +1,7 @@
-require_relative 'cypher'
+require_relative 'cipher'
 
 class Shift
-  include Cypher
+  include Cipher
 
   def the_keys(key)
     the_keys = Hash.new
