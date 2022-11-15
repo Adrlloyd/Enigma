@@ -46,6 +46,12 @@ RSpec.describe Enigma do
 
       expect(input1[:encryption]).to eq "keder ohulw"
     end
+
+    it 'can handle none letter characters' do 
+      input1 = enigma.encrypt("hello world???", "02715", "040895")
+
+      expect(input1[:encryption]).to eq "keder ohulw???"
+    end
   end
 
   describe '#decrypt' do
@@ -74,6 +80,15 @@ RSpec.describe Enigma do
       input1 = enigma.decrypt("KEDER OHULW", "02715", "040895")
 
       expect(input1[:decryption]).to eq "hello world"
+    end
+
+    it 'can handle none letter characters' do 
+      input1 = enigma.decrypt("KEDER OHULW???", "02715", "040895")
+      input2 = enigma.encrypt("hello world???", "02720", "040860")
+      output2 = enigma.decrypt(input2[:encryption], "02720", "040860")
+
+      expect(input1[:decryption]).to eq "hello world???"
+      expect(output2[:decryption]).to eq "hello world???"
     end
   end
 end

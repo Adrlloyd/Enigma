@@ -15,9 +15,8 @@ RSpec.describe Cipher do
 
   describe '#today' do
     it 'generates todays date' do
-      allow(enigma).to receive(:today).and_return("131122")
       expect(enigma.today.length).to eq 6
-      expect(enigma.today).to eq ("131122")
+      expect(enigma.today).to eq (Date.today.strftime("%d%m%y"))
     end
   end
 
