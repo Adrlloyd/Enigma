@@ -1,9 +1,10 @@
+require 'date'
 require './lib/cipher'
-require './lib/enigma'
+
 
 RSpec.describe Cipher do
   let(:enigma) {Enigma.new}
-  let(:the_date) {Date.today.strftime("%m%d%y")}
+  let(:today) {Date.today.strftime("%m%d%y")}
 
   describe '#rand_keys' do
     it 'creates a string of 5 random keys(digits)' do
@@ -12,9 +13,11 @@ RSpec.describe Cipher do
     end
   end
 
-  describe '#the_date' do
+  describe '#today' do
     it 'generates todays date' do
-     expect(enigma.the_date.length).to eq 6
+      allow(enigma).to receive(:today).and_return("131122")
+      expect(enigma.today.length).to eq 6
+      expect(enigma.today).to eq ("131122")
     end
   end
 
