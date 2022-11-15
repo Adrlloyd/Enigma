@@ -17,13 +17,13 @@ class Enigma < Shift
     }
   end
 
-  def decrypt(message, key, date = today)
-    message = message.downcase
+  def decrypt(code, key, date = today)
+    code = code.downcase
     keys = the_keys(key)
     offsets = the_offsets(date)
     shifts = the_shifts(keys, offsets)
     { 
-      decryption: decode(message, shifts),
+      decryption: decode(code, shifts),
       key: key,
       date: date
     }
@@ -60,10 +60,10 @@ class Enigma < Shift
     output
   end
 
-  def decode(message, shifts)
+  def decode(code, shifts)
     counter = 0
     output = ''
-    message.chars.each do |character|
+    code.chars.each do |character|
       if !characters.include?(character)
         output += character
       elsif counter == 0
