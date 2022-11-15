@@ -1,9 +1,9 @@
 require 'date'
 require_relative 'shift'
-require_relative 'cypher'
+require_relative 'cipher'
 
 class Enigma < Shift
-  include Cypher
+  include Cipher
 
   def encrypt(message, key = rand_keys, date = today)
     message = message.downcase
