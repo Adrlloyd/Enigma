@@ -25,10 +25,16 @@ RSpec.describe Shift do
 
   describe '#the_offset' do
     let(:shift) {Shift.new}
+    date = "040895"
        
     it 'creates the offset amount for each key' do
       input = shift.the_offsets("040895")
-      
+      input2 = date_squared = (date.to_i ** 2).to_s
+      input3 = offset_amount = date_squared[-4..-1]
+
+      expect(input2).to eq "1672401025"
+      expect(input3).to eq "1025"
+
       expect(input[:A].length).to eq 1
       expect(input[:A]).to eq "1"
       expect(input[:B]).to eq "0"
