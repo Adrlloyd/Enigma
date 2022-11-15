@@ -1,8 +1,8 @@
 require 'date'
-require './lib/cypher'
+require './lib/cipher'
 
 
-RSpec.describe Cypher do
+RSpec.describe Cipher do
   let(:enigma) {Enigma.new}
   let(:today) {Date.today.strftime("%m%d%y")}
 

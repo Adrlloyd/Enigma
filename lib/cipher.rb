@@ -1,6 +1,6 @@
 require 'date'
 
-module Cypher
+module Cipher
 
   def rand_keys
     rand.to_s[2..6]
