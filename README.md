@@ -1,4 +1,5 @@
 #### Enigma
+A program to crack an encryption based on the Caesar Cipher, translating a character by shifting it a certain number of places down the alphabet.
 
 ###### Functionality;
 3, Both my encrypt and decrypt have been implemented on CLI. I have not attempted cracking method so can not be considered for a 4.
